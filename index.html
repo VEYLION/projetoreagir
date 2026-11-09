@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJETO R.E.A.G.I.R. — Toda vida merece uma oportunidade de recomeçar</title>
+    <link rel="icon" type="image/png" href="reagir.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #05B96C;
+            --primary-dark: #087A4A;
+            --primary-light: #D5EBCB;
+            --lime: #C5FF68;
+            --white: #FFFFFF;
+            --bg: #F6F8F3;
+            --text-main: #17221C;
+            --text-secondary: #667085;
+            --border-color: #E2E8F0;
+            --shadow-sm: 0 4px 12px rgba(5, 185, 108, 0.06);
+            --shadow-md: 0 10px 30px rgba(5, 185, 108, 0.12);
+            --radius-lg: 20px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(246, 248, 243, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(5, 185, 108, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 84px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .brand-name {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-link {
+            font-size: 0.95krem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary-dark);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 14px rgba(5, 185, 108, 0.3);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(5, 185, 108, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--primary-dark);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 2px solid var(--primary-light);
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-light);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-main);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 160px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            color: var(--text-main);
+            margin-bottom: 24px;
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 36px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hero-card-visual {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            color: var(--white);
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-card-visual img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 24px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+        .hero-quote {
+            font-size: 1.1rem;
+            font-style: italic;
+            font-weight: 500;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        /* MISSION SECTION */
+        .mission {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--text-main);
+            margin-bottom: 20px;
+        }
+
+        .section-desc {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .mission-card {
+            background-color: var(--bg);
+            border: 1px solid rgba(5, 185, 108, 0.1);
+            border-radius: var(--radius-md);
+            padding: 40px 32px;
+            transition: var(--transition);
+        }
+
+        .mission-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-sm);
+            border-color: var(--primary);
+            background-color: var(--white);
+        }
+
+        .mission-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-light);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: var(--primary-dark);
+        }
+
+        .mission-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .mission-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* HOW TO HELP */
+        .how-to-help {
+            padding: 100px 0;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .step-card {
+            background-color: var(--white);
+            border-radius: var(--radius-md);
+            padding: 40px;
+            position: relative;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .step-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            opacity: 0.3;
+            margin-bottom: 16px;
+            display: block;
+            line-height: 1;
+        }
+
+        .step-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .step-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        /* DONATION SECTION - PRIORITY */
+        .donation-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--white) 0%, var(--bg) 100%);
+        }
+
+        .donation-box {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 60px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(5, 185, 108, 0.15);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .amounts-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .amount-btn {
+            background-color: var(--bg);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .amount-btn:hover {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+        }
+
+        .amount-btn.active {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(5, 185, 108, 0.3);
+        }
+
+        .amount-btn.custom-amount-toggle {
+            grid-column: span 4;
+            background-color: #FAFAFA;
+        }
+
+        .custom-input-container {
+            display: none;
+            margin-bottom: 24px;
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+
+        .custom-input-container.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .custom-input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .currency-prefix {
+            position: absolute;
+            left: 20px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+        }
+
+        .custom-input {
+            width: 100%;
+            padding: 18px 20px 18px 60px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            background-color: var(--bg);
+            color: var(--text-main);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .custom-input:focus {
+            border-color: var(--primary);
+            background-color: var(--white);
+            box-shadow: 0 0 0 4px rgba(5, 185, 108, 0.1);
+        }
+
+        .input-error-msg {
+            color: #E53E3E;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 8px;
+            display: none;
+        }
+
+        .donation-action {
+            margin-top: 32px;
+            text-align: center;
+        }
+
+        .btn-continue {
+            width: 100%;
+            padding: 20px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            border-radius: var(--radius-sm);
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 6px 20px rgba(5, 185, 108, 0.35);
+        }
+
+        .btn-continue:hover:not(:disabled) {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-continue:disabled {
+            background-color: var(--border-color);
+            color: var(--text-secondary);
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        /* PIX MODAL */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(23, 34, 28, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            padding: 20px;
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            position: relative;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .modal-overlay.open .modal-card {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: var(--bg);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .modal-header h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .modal-header p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .pix-display-box {
+            background-color: var(--bg);
+            border: 2px dashed var(--primary);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .pix-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+
+        .pix-key-text {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            word-break: break-all;
+            margin-bottom: 16px;
+        }
+
+        .btn-copy-pix {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 14px 28px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(5, 185, 108, 0.3);
+        }
+
+        .btn-copy-pix:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-copy-pix.success {
+            background-color: #087A4A;
+        }
+
+        .pix-instructions {
+            background-color: var(--primary-light);
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            font-size: 0.9rem;
+            color: var(--primary-dark);
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        /* TRANSPARENCY */
+        .transparency {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .transparency-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin-top: 50px;
+        }
+
+        .transparency-card {
+            background-color: var(--bg);
+            border-radius: var(--radius-md);
+            padding: 40px;
+            border: 1px solid var(--border-color);
+        }
+
+        .transparency-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .transparency-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .transparency-notice {
+            background-color: var(--primary-light);
+            border-left: 4px solid var(--primary);
+            padding: 24px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            margin-top: 40px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            font-size: 1.05rem;
+            text-align: center;
+        }
+
+        /* FAQ SECTION */
+        .faq {
+            padding: 100px 0;
+        }
+
+        .accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .accordion-item {
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .accordion-item.active {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .accordion-header {
+            padding: 24px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--white);
+            transition: var(--transition);
+        }
+
+        .accordion-header:hover {
+            color: var(--primary-dark);
+        }
+
+        .accordion-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(45deg);
+        }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            padding: 0 24px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .accordion-item.active .accordion-body {
+            max-height: 300px;
+            padding: 0 24px 24px 24px;
+        }
+
+        /* FINAL CALL TO ACTION */
+        .cta-banner {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-dark), #045c36);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-banner h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .cta-banner p {
+            font-size: 1.2rem;
+            max-width: 650px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--text-main);
+            color: var(--white);
+            padding: 80px 0 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .footer-brand img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .footer-brand span {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--white);
+        }
+
+        .footer-desc {
+            color: #98A2B3;
+            font-size: 0.95rem;
+            max-width: 350px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .footer-pix-key {
+            font-size: 0.9rem;
+            color: var(--lime);
+            font-weight: 600;
+        }
+
+        .footer-col h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--white);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: #98A2B3;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--lime);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            text-align: center;
+            color: #98A2B3;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVENESS */
+        @media (max-width: 968px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .mission-grid, .steps-grid, .transparency-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .amounts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .amount-btn.custom-amount-toggle {
+                grid-column: span 2;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 84px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 24px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta-banner h2 {
+                font-size: 2.2rem;
+            }
+
+            .donation-box {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .amounts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .amount-btn.custom-amount-toggle {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container navbar">
+            <a href="#" class="brand">
+                <img src="reagir.png" alt="Logo Projeto R.E.A.G.I.R." class="brand-logo">
+                <span class="brand-name">R.E.A.G.I.R.</span>
+            </a>
+            <nav class="nav-links" id="navLinks">
+                <a href="#inicio" class="nav-link">Início</a>
+                <a href="#missao" class="nav-link">Nossa missão</a>
+                <a href="#transparencia" class="nav-link">Transparência</a>
+                <a href="#como-ajudar" class="nav-link">Como ajudar</a>
+                <a href="#duvidas" class="nav-link">Dúvidas</a>
+            </nav>
+            <button class="btn-primary" onclick="scrollToDonation()">QUERO AJUDAR</button>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section id="inicio" class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <h1>Eles não conseguem pedir ajuda. Mas nós podemos fazer algo por eles.</h1>
+                <p>O Projeto R.E.A.G.I.R. nasceu de um propósito: transformar a solidariedade em cuidado e levar apoio a cães e gatos que enfrentam situações de vulnerabilidade. Acreditamos que toda vida merece respeito, proteção e uma oportunidade de recomeçar.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="scrollToDonation()">FAZER UMA DOAÇÃO</button>
+                    <a href="#missao" class="btn-secondary">CONHECER NOSSA MISSÃO</a>
+                </div>
+            </div>
+            <div class="hero-card-visual">
+                <img src="reagir.png" alt="Projeto R.E.A.G.I.R.">
+                <p class="hero-quote">"Talvez você não consiga mudar o mundo inteiro, mas pode ajudar a mudar a história de uma vida."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOSSA MISSAO -->
+    <section id="missao" class="mission">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Nossa Missão</span>
+                <h2 class="section-title">Uma causa que começa com empatia.</h2>
+                <p class="section-desc">Existem animais que passam os dias sem saber quando será a próxima refeição ou quando receberão algum cuidado. O Projeto R.E.A.G.I.R. nasceu da vontade de fazer algo por esses animais.</p>
+            </div>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7;">
+                Nossa iniciativa é dedicada exclusivamente ao apoio de cães e gatos em situação de vulnerabilidade. Por meio da solidariedade e das contribuições voluntárias, buscamos arrecadar recursos para ajudar com alimentação, medicamentos, cuidados veterinários e outras necessidades.
+            </p>
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                    </div>
+                    <h3>Alimentação</h3>
+                    <p>Apoio com alimentos de qualidade para animais que precisam de sustento diário e nutrição adequada.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <h3>Saúde e cuidados</h3>
+                    <p>Contribuição vital para medicamentos essenciais, tratamentos e atendimento veterinário especializado.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </div>
+                    <h3>Proteção e acolhimento</h3>
+                    <p>Apoio contínuo às necessidades fundamentais de cães e gatos em situação de vulnerabilidade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMO AJUDAR -->
+    <section id="como-ajudar" class="how-to-help">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Passo a Passo</span>
+                <h2 class="section-title">Fazer parte dessa causa é simples.</h2>
+                <p class="section-desc">Com apenas alguns cliques, você viabiliza recursos essenciais para salvar e transformar vidas.</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <span class="step-number">01</span>
+                    <h3>Escolha sua contribuição</h3>
+                    <p>Selecione um dos valores sugeridos ou digite o valor que estiver ao seu alcance para apoiar o projeto.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">02</span>
+                    <h3>Copie nossa chave PIX</h3>
+                    <p>Utilize o botão de cópia rápida para obter nossa chave oficial de atendimento com total segurança.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">03</span>
+                    <h3>Conclua a transferência</h3>
+                    <p>Abra o aplicativo do seu banco, cole a chave PIX, insira o valor escolhido e confirme a sua doação.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ÁREA DE CONTRIBUIÇÕES — PRIORIDADE MÁXIMA -->
+    <section id="doacao" class="donation-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Prioridade Máxima</span>
+                <h2 class="section-title">Escolha quanto deseja contribuir.</h2>
+                <p class="section-desc">Cada pessoa ajuda como pode. Não existe contribuição pequena quando existe vontade de fazer o bem.</p>
+            </div>
+            
+            <div class="donation-box">
+                <div class="amounts-grid" id="amountsGrid">
+                    <button type="button" class="amount-btn" data-value="5">R$ 5,00</button>
+                    <button type="button" class="amount-btn" data-value="10">R$ 10,00</button>
+                    <button type="button" class="amount-btn" data-value="20">R$ 20,00</button>
+                    <button type="button" class="amount-btn" data-value="50">R$ 50,00</button>
+                    <button type="button" class="amount-btn" data-value="100">R$ 100,00</button>
+                    <button type="button" class="amount-btn" data-value="150">R$ 150,00</button>
+                    <button type="button" class="amount-btn" data-value="250">R$ 250,00</button>
+                    <button type="button" class="amount-btn" data-value="500">R$ 500,00</button>
+                    <button type="button" class="amount-btn" data-value="750">R$ 750,00</button>
+                    <button type="button" class="amount-btn" data-value="1000">R$ 1.000,00</button>
+                    <button type="button" class="amount-btn" data-value="2500">R$ 2.500,00</button>
+                    <button type="button" class="amount-btn" data-value="5000">R$ 5.000,00</button>
+                    <button type="button" class="amount-btn" data-value="10000">R$ 10.000,00</button>
+                    <button type="button" class="amount-btn custom-amount-toggle" id="otherAmountBtn" data-value="outro">OUTRO VALOR</button>
+                </div>
+
+                <div class="custom-input-container" id="customInputContainer">
+                    <div class="custom-input-wrapper">
+                        <span class="currency-prefix">R$</span>
+                        <input type="text" id="customAmountInput" class="custom-input" placeholder="Digite o valor da sua contribuição" autocomplete="off">
+                    </div>
+                    <div class="input-error-msg" id="inputErrorMsg">Por favor, insira um valor válido maior que zero e menor ou igual a R$ 1.000.000,00.</div>
+                </div>
+
+                <div class="donation-action">
+                    <button type="button" id="continueBtn" class="btn-continue" disabled>SELECIONE UM VALOR PARA CONTINUAR</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRANSPARENCIA -->
+    <section id="transparencia" class="transparency">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Transparência e Confiança</span>
+                <h2 class="section-title">A confiança também faz parte da nossa missão.</h2>
+                <p class="section-desc">Acreditamos que toda iniciativa solidária precisa caminhar junto com a responsabilidade. Queremos que cada pessoa que contribui possa acompanhar o trabalho desenvolvido pelo projeto.</p>
+            </div>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7;">
+                Nosso compromisso é divulgar atualizações sobre as ações e registros relacionados à utilização dos recursos arrecadados.
+            </p>
+
+            <div class="transparency-grid">
+                <div class="transparency-card">
+                    <h3>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                        Prestação de contas
+                    </h3>
+                    <p>Relatórios claros e objetivos sobre a destinação de cada contribuição recebida em prol dos animais atendidos.</p>
+                </div>
+                <div class="transparency-card">
+                    <h3>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                        Registros das ações
+                    </h3>
+                    <p>Documentação visual e narrativa de todas as frentes de apoio realizadas junto aos cães e gatos em vulnerabilidade.</p>
+                </div>
+                <div class="transparency-card">
+                    <h3>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                        Comprovantes de despesas
+                    </h3>
+                    <p>Transparência total nos custos com alimentação, medicamentos e atendimentos veterinários essenciais.</p>
+                </div>
+                <div class="transparency-card">
+                    <h3>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                        Atualizações do projeto
+                    </h3>
+                    <p>Acompanhamento contínuo dos impactos gerados pela solidariedade de nossa comunidade acolhedora.</p>
+                </div>
+            </div>
+
+            <div class="transparency-notice">
+                Os registros das atividades e atualizações serão publicados conforme as ações do projeto forem realizadas.
+            </div>
+        </div>
+    </section>
+
+    <!-- PERGUNTAS FREQUENTES -->
+    <section id="duvidas" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Esclarecimentos</span>
+                <h2 class="section-title">Perguntas frequentes</h2>
+                <p class="section-desc">Tire suas dúvidas sobre o funcionamento do Projeto R.E.A.G.I.R. e nossa forma de atuação.</p>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Quem recebe ajuda por meio do projeto?</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-body">
+                        O Projeto R.E.A.G.I.R. é dedicado exclusivamente ao apoio de cães e gatos em situação de vulnerabilidade, que enfrentam escassez de alimentação, falta de medicamentos ou ausência de cuidados veterinários.
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Como posso contribuir?</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-body">
+                        Você pode contribuir de forma voluntária por meio de nossa chave PIX oficial (projetoreagirbr@gmail.com), escolhendo o valor que estiver ao seu alcance.
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Existe um valor mínimo?</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-body">
+                        Não existe contribuição pequena. Cada pessoa ajuda como pode, e qualquer valor faz uma diferença real na vida dos animais atendidos.
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Como saberei onde as doações são utilizadas?</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-body">
+                        Nosso compromisso é com a transparência total. Publicaremos relatórios de prestação de contas, registros das ações e comprovantes de despesas conforme as atividades do projeto forem realizadas.
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Posso ajudar sem doar dinheiro?</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-body">
+                        Sim! Compartilhar nossa mensagem nas redes sociais, falar sobre o projeto com amigos e familiares e engajar a comunidade também são formas poderosas de apoiar nossa causa.
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Como acompanho as atividades?</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-body">
+                        Todas as atualizações e registros das ações do projeto são divulgados periodicamente em nossos canais oficiais de comunicação.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAMADA FINAL -->
+    <section class="cta-banner">
+        <div class="container">
+            <h2>Uma vida não precisa de muito para começar de novo. Às vezes, precisa apenas de alguém que se importe.</h2>
+            <p>Se essa causa também toca seu coração, venha fazer parte dela.</p>
+            <button class="btn-primary" style="background-color: var(--lime); color: var(--text-main); font-weight: 800;" onclick="scrollToDonation()">QUERO FAZER PARTE</button>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <img src="reagir.png" alt="Logo Projeto R.E.A.G.I.R.">
+                        <span>PROJETO R.E.A.G.I.R.</span>
+                    </div>
+                    <p class="footer-desc">Porque toda vida merece uma oportunidade de recomeçar.</p>
+                    <p class="footer-pix-key">Chave PIX: projetoreagirbr@gmail.com</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navegação</h4>
+                    <div class="footer-links">
+                        <a href="#inicio">Início</a>
+                        <a href="#missao">Nossa missão</a>
+                        <a href="#transparencia">Transparência</a>
+                        <a href="#como-ajudar">Como ajudar</a>
+                        <a href="#duvidas">Dúvidas</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <div class="footer-links">
+                        <a href="mailto:projetoreagirbr@gmail.com">projetoreagirbr@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 PROJETO R.E.A.G.I.R. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- PIX MODAL -->
+    <div class="modal-overlay" id="pixModal">
+        <div class="modal-card">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-header">
+                <h3>Sua solidariedade pode fazer a diferença.</h3>
+                <p id="modalAmountText">Valor escolhido: R$ 0,00</p>
+            </div>
+            <div class="pix-display-box">
+                <div class="pix-label">Chave PIX (E-mail)</div>
+                <div class="pix-key-text" id="pixKeyText">projetoreagirbr@gmail.com</div>
+                <button type="button" class="btn-copy-pix" id="copyPixBtn">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path></svg>
+                    <span id="copyBtnText">COPIAR CHAVE PIX</span>
+                </button>
+            </div>
+            <div class="pix-instructions">
+                Agora abra o aplicativo do seu banco, acesse a opção PIX e cole nossa chave. Informe o valor escolhido e confira os dados do destinatário antes de confirmar.
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Donation State & Logic
+        let selectedValue = null;
+        let isCustom = false;
+
+        const amountButtons = document.querySelectorAll('.amounts-grid .amount-btn');
+        const otherAmountBtn = document.getElementById('otherAmountBtn');
+        const customInputContainer = document.getElementById('customInputContainer');
+        const customAmountInput = document.getElementById('customAmountInput');
+        const inputErrorMsg = document.getElementById('inputErrorMsg');
+        const continueBtn = document.getElementById('continueBtn');
+
+        function scrollToDonation() {
+            document.getElementById('doacao').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        amountButtons.forEach(btn => {
+            if(btn.id === 'otherAmountBtn') return;
+            btn.addEventListener('click', () => {
+                amountButtons.forEach(b => b.classList.remove('active'));
+                otherAmountBtn.classList.remove('active');
+                btn.classList.add('active');
+                
+                customInputContainer.classList.remove('active');
+                customAmountInput.value = '';
+                inputErrorMsg.style.display = 'none';
+
+                selectedValue = parseFloat(btn.getAttribute('data-value'));
+                updateContinueButton();
+            });
+        });
+
+        otherAmountBtn.addEventListener('click', () => {
+            amountButtons.forEach(b => b.classList.remove('active'));
+            otherAmountBtn.classList.add('active');
+            customInputContainer.classList.add('active');
+            customAmountInput.focus();
+
+            isCustom = true;
+            selectedValue = null;
+            validateCustomInput();
+        });
+
+        customAmountInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value === '') {
+                customAmountInput.value = '';
+                selectedValue = null;
+                validateCustomInput();
+                return;
+            }
+
+            let numValue = parseInt(value, 10) / 100;
+            customAmountInput.value = numValue.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            selectedValue = numValue;
+            validateCustomInput();
+        });
+
+        function validateCustomInput() {
+            if (!isCustom) return;
+            
+            if (selectedValue === null || isNaN(selectedValue) || selectedValue <= 0) {
+                continueBtn.disabled = true;
+                continueBtn.textContent = 'DIGITE UM VALOR VÁLIDO';
+                inputErrorMsg.style.display = 'block';
+                inputErrorMsg.textContent = 'Por favor, insira um valor maior que zero.';
+            } else if (selectedValue > 1000000) {
+                continueBtn.disabled = true;
+                continueBtn.textContent = 'VALOR ACIMA DO LIMITE';
+                inputErrorMsg.style.display = 'block';
+                inputErrorMsg.textContent = 'O limite máximo por contribuição é de R$ 1.000.000,00.';
+            } else {
+                inputErrorMsg.style.display = 'none';
+                continueBtn.disabled = false;
+                const formatted = selectedValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+                continueBtn.textContent = `CONTINUAR COM ${formatted}`;
+            }
+        }
+
+        function updateContinueButton() {
+            if (selectedValue !== null && selectedValue > 0) {
+                const formatted = selectedValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+                continueBtn.disabled = false;
+                continueBtn.textContent = `CONTINUAR COM ${formatted}`;
+            } else {
+                continueBtn.disabled = true;
+                continueBtn.textContent = 'SELECIONE UM VALOR PARA CONTINUAR';
+            }
+        }
+
+        // Modal PIX Logic
+        const pixModal = document.getElementById('pixModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalAmountText = document.getElementById('modalAmountText');
+        const copyPixBtn = document.getElementById('copyPixBtn');
+        const copyBtnText = document.getElementById('copyBtnText');
+        const pixKeyText = document.getElementById('pixKeyText');
+
+        continueBtn.addEventListener('click', () => {
+            if (selectedValue === null || selectedValue <= 0) return;
+            const formatted = selectedValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            modalAmountText.textContent = `Valor escolhido: ${formatted}`;
+            pixModal.classList.add('open');
+        });
+
+        modalClose.addEventListener('click', () => {
+            pixModal.classList.remove('open');
+        });
+
+        pixModal.addEventListener('click', (e) => {
+            if (e.target === pixModal) {
+                pixModal.classList.remove('open');
+            }
+        });
+
+        copyPixBtn.addEventListener('click', () => {
+            const keyToCopy = pixKeyText.textContent.trim();
+            
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(keyToCopy).then(() => {
+                    showCopySuccess();
+                }).catch(() => {
+                    fallbackCopyText(keyToCopy);
+                });
+            } else {
+                fallbackCopyText(keyToCopy);
+            }
+        });
+
+        function fallbackCopyText(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showCopySuccess();
+            } catch (err) {
+                console.error('Erro ao copiar chave PIX', err);
+            }
+            document.body.removeChild(textArea);
+        }
+
+        function showCopySuccess() {
+            copyPixBtn.classList.add('success');
+            copyBtnText.textContent = 'CHAVE PIX COPIADA COM SUCESSO!';
+            setTimeout(() => {
+                copyPixBtn.classList.remove('success');
+                copyBtnText.textContent = 'COPIAR CHAVE PIX';
+            }, 3500);
+        }
+
+        // FAQ Accordion Logic
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        accordionItems.forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            header.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                accordionItems.forEach(i => i.classList.remove('active'));
+                
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
